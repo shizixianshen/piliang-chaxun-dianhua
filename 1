@@ -1,0 +1,21 @@
+import requests
+
+# 假设这是你的公司名称列表
+company_names = ['公司 A', '公司 B', '公司 C']
+
+def query_company_phone(company_name):
+    # 这里使用假设的 API 地址，实际需替换为真实有效的 API
+    api_url = f'https://example.com/api/query?company={company_name}'
+    response = requests.get(api_url)
+    data = response.json()
+    if 'phone' in data:
+        return data['phone']
+    else:
+        return None
+
+for company in company_names:
+    phone_number = query_company_phone(company)
+    if phone_number:
+        print(f'{company}的电话是：{phone_number}')
+    else:
+        print(f'未找到{company}的电话。')
